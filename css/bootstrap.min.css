@@ -2084,7 +2084,7 @@ progress {
   --bs-table-hover-bg: #e6c3cc;
   --bs-table-hover-color: #000;
   color: #000;
-  border-color: #e0bec7
+  border-color: #e0bec7;
 }
 
 .table-success {
@@ -2108,7 +2108,7 @@ progress {
   --bs-table-hover-bg: #bfe2e9;
   --bs-table-hover-color: #000;
   color: #000;
-  border-color: #badce3
+  border-color: #badce3;
 }
 
 .table-warning {
@@ -2144,7 +2144,7 @@ progress {
   --bs-table-hover-bg: #dee3e8;
   --bs-table-hover-color: #000;
   color: #000;
-  border-color: #d8dde2
+  border-color: #d8dde2;
 }
 
 .table-dark {
