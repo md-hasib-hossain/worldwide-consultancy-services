@@ -1,0 +1,450 @@
+/* =========================================================
+   RESPONSIVE.CSS
+   Full, professional mobile-first responsive layer for
+   Worldwide Consultancy Services.
+   Loaded AFTER style.css, so rules here override/extend it.
+   Breakpoints follow Bootstrap 5: 576 / 768 / 992 / 1200 / 1400
+   ========================================================= */
+
+/* ---------- Global / base fixes ---------- */
+html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-xl,
+.container-xxl {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Prevent long words / long emails / links from breaking layout on small screens */
+a, p, span, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Tables (e.g. inside content pages) become scrollable instead of overflowing */
+table {
+    max-width: 100%;
+}
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* iframes / maps / embeds stay within their container */
+iframe,
+embed,
+object,
+video {
+    max-width: 100%;
+}
+
+/* Fluid typography: scales headings smoothly between mobile and desktop */
+h1, .display-1, .display-3, .display-4, .display-5, .display-6 {
+    line-height: 1.2;
+}
+
+@media (max-width: 1399.98px) {
+    html { font-size: 15.5px; }
+}
+
+@media (max-width: 991.98px) {
+    html { font-size: 15px; }
+
+    .display-1 { font-size: calc(1.75rem + 3vw); }
+    .display-3 { font-size: calc(1.6rem + 2.5vw); }
+    .display-4,
+    .display-5 { font-size: calc(1.4rem + 2vw); }
+    .display-6 { font-size: calc(1.2rem + 1.2vw); }
+
+    h1 { font-size: calc(1.4rem + 1.5vw); }
+    h2 { font-size: calc(1.2rem + 1.1vw); }
+    h3 { font-size: calc(1.1rem + 0.6vw); }
+}
+
+@media (max-width: 767.98px) {
+    html { font-size: 14.5px; }
+
+    .display-1 { font-size: calc(1.6rem + 4vw); }
+    .display-3 { font-size: calc(1.5rem + 3vw); }
+    .display-4,
+    .display-5 { font-size: calc(1.3rem + 2.5vw); }
+    .display-6 { font-size: calc(1.1rem + 1.6vw); }
+
+    /* Section spacing tightened so mobile pages don't feel too tall */
+    .py-5 { padding-top: 2.25rem !important; padding-bottom: 2.25rem !important; }
+    .pt-5 { padding-top: 2.25rem !important; }
+    .pb-5 { padding-bottom: 2.25rem !important; }
+    .my-5 { margin-top: 2.25rem !important; margin-bottom: 2.25rem !important; }
+    .mb-5 { margin-bottom: 2.25rem !important; }
+    .mt-5 { margin-top: 2.25rem !important; }
+}
+
+@media (max-width: 575.98px) {
+    html { font-size: 14px; }
+
+    .display-1 { font-size: 2.1rem; }
+    .display-3 { font-size: 1.9rem; }
+    .display-4,
+    .display-5 { font-size: 1.7rem; }
+    .display-6 { font-size: 1.35rem; }
+
+    .section-title { padding: 0 5px; }
+}
+
+
+/* ---------- Topbar ---------- */
+@media (max-width: 991.98px) {
+    .topbar {
+        display: none;
+    }
+}
+
+
+/* ---------- Navbar ---------- */
+.navbar-brand img {
+    width: auto;
+    height: auto;
+}
+
+/* Force brand title to a single consistent, compact size on every page
+   (some inner pages used Bootstrap's large `display-5` class instead of
+   the small inline size used on the homepage) */
+.navbar-brand h1 {
+    font-size: 20px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 991.98px) {
+    .navbar.navbar-expand-lg {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+    }
+
+    /* Keep logo + hamburger button locked on the SAME row, always.
+       Brand is allowed to shrink/truncate instead of pushing the
+       toggler button down onto its own line. */
+    .navbar.navbar-expand-lg > .navbar-brand {
+        flex: 1 1 0%;
+        min-width: 0;
+        max-width: calc(100% - 60px);
+        overflow: hidden;
+    }
+
+    .navbar-brand h1 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    .navbar.navbar-expand-lg > .navbar-toggler {
+        flex: 0 0 auto;
+        margin-left: 10px;
+    }
+
+    .navbar-light .navbar-brand img {
+        max-height: 40px;
+    }
+
+    .navbar-light .navbar-collapse {
+        max-height: 75vh;
+        overflow-y: auto;
+        padding-bottom: 10px;
+    }
+
+    .navbar .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        padding-left: 12px;
+        background: transparent !important;
+    }
+
+    /* Nav action row (search icon + Get A Quote) sits neatly side by side,
+       instead of the search icon stretching full width and losing its round shape */
+    .navbar .navbar-collapse > .btn.btn-primary,
+    .navbar .navbar-collapse > a.btn.btn-primary {
+        display: inline-flex;
+    }
+
+    /* Only apply flex layout WHEN the collapse menu is actually open (.show),
+       so the hamburger toggle (open/close) keeps working normally */
+    .navbar .navbar-collapse.show {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .navbar .navbar-collapse .navbar-nav {
+        width: 100%;
+    }
+
+    /* Keep the round search button its intended compact circular size */
+    .navbar .btn.btn-primary.btn-md-square,
+    .navbar .btn.btn-primary.btn-square,
+    .navbar .btn.btn-primary.btn-sm-square,
+    .navbar .btn.btn-primary.btn-lg-square {
+        width: 44px !important;
+        height: 44px !important;
+        flex: 0 0 auto;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    /* Only the "Get A Quote" call-to-action (not square/round) goes full width, stacked below */
+    .navbar .btn.btn-primary:not(.btn-square):not(.btn-sm-square):not(.btn-md-square):not(.btn-lg-square) {
+        margin-top: 10px;
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-light .navbar-brand img {
+        max-height: 34px;
+    }
+
+    .navbar-brand h1 {
+        font-size: 17px !important;
+    }
+}
+
+
+/* ---------- Hero / carousel header ---------- */
+.carousel-header .carousel-inner .carousel-item {
+    min-height: 100vh;
+}
+
+@media (max-width: 991.98px) {
+    .carousel-header .carousel-inner .carousel-item {
+        min-height: 85vh;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .carousel-header,
+    .carousel-header .carousel-inner .carousel-item {
+        min-height: 560px !important;
+        height: 560px !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption {
+        padding: 0 15px;
+    }
+
+    .carousel-header .carousel-control-prev,
+    .carousel-header .carousel-control-next {
+        width: 12%;
+    }
+
+    .carousel-header .carousel-control-prev .carousel-control-prev-icon,
+    .carousel-header .carousel-control-next .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .carousel-header,
+    .carousel-header .carousel-inner .carousel-item {
+        min-height: 480px !important;
+        height: 480px !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption h1,
+    .carousel-header .carousel-inner .carousel-item .carousel-caption .display-1,
+    .carousel-header .carousel-inner .carousel-item .carousel-caption .display-3 {
+        font-size: 1.8rem;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Breadcrumb hero (inner pages) */
+.bg-breadcrumb {
+    padding: 100px 0 60px 0;
+}
+
+@media (max-width: 767.98px) {
+    .bg-breadcrumb {
+        padding: 80px 0 40px 0;
+    }
+    .bg-breadcrumb h3,
+    .bg-breadcrumb .display-3 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .bg-breadcrumb {
+        padding: 70px 0 35px 0;
+    }
+    .bg-breadcrumb ol.breadcrumb {
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ---------- Counter facts ---------- */
+.counter-facts .counter {
+    width: 200px;
+    max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    .counter-facts .counter {
+        width: 170px;
+        min-height: 190px;
+    }
+    .counter-facts .counter .counter-icon {
+        width: 100px;
+        height: 85px;
+        font-size: 40px;
+        line-height: 75px;
+    }
+    .counter-facts .counter .counter-value {
+        font-size: 24px;
+    }
+}
+
+
+/* ---------- Service / Features / Country / Training cards ---------- */
+@media (max-width: 575.98px) {
+    .service .service-item .service-inner .service-title h4,
+    .service .service-item .service-inner .service-title .service-title-name h4 {
+        font-size: 1.1rem;
+    }
+
+    .features .feature-item .feature-icon {
+        width: 90px;
+        height: 90px;
+    }
+    .features .feature-item .feature-icon i {
+        font-size: 1.6rem !important;
+    }
+
+    .country .country-item .country-flag {
+        width: 70px;
+        height: 70px;
+        top: -35px;
+    }
+
+    .training .training-item .training-inner .training-title-name {
+        padding: 12px;
+    }
+}
+
+
+/* ---------- Testimonial carousel ---------- */
+.testimonial .owl-carousel.testimonial-carousel .owl-nav {
+    position: relative;
+    top: 0;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (min-width: 992px) {
+    .testimonial .owl-carousel.testimonial-carousel .owl-nav {
+        position: absolute;
+        top: -60px;
+        right: 0;
+        justify-content: flex-end;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .testimonial .owl-carousel.testimonial-carousel .testimonial-item .testimonial-content {
+        padding: 20px !important;
+    }
+}
+
+
+/* ---------- Forms (contact / newsletter / search) ---------- */
+.form-control,
+.form-select {
+    max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    .form-control,
+    .form-select {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* ---------- Contact office cards ---------- */
+@media (max-width: 575.98px) {
+    .contact .office .office-item {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* ---------- Footer ---------- */
+@media (max-width: 767.98px) {
+    .footer {
+        text-align: center;
+    }
+    .footer .footer-item {
+        margin-bottom: 25px;
+    }
+    .footer .footer-item h4::before,
+    .footer .footer-item h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .copyright .col-md-6 {
+        text-align: center !important;
+        margin-bottom: 8px;
+    }
+}
+
+
+/* ---------- Back to top button ---------- */
+@media (max-width: 575.98px) {
+    .back-to-top {
+        right: 15px;
+        bottom: 15px;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+
+/* ---------- Buttons full-width on very small screens for readability ---------- */
+@media (max-width: 400px) {
+    .btn.btn-lg {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
